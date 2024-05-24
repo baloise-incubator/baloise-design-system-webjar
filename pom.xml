@@ -2,13 +2,47 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <organization>
+    <name>Baloise Group</name>
+    <url>https://www.baloise.com</url>
+  </organization>
+
   <groupId>com.baloise.webjars</groupId>
   <artifactId>baloise-design-system</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>baloise-design-system-webjar</name>
-  <url>http://maven.apache.org</url>
+  <description>Create webjar containing the baloise design system, so that it can be used by jvm based backends (e.g.Springboot with thymeleaf, JTE, ...)</description>
+  <url>https://github.com/baloise-incubator/baloise-design-system-webjar</url>
+
+  <developers>
+    <developer>
+      <id>svene</id>
+      <name>Sven Ehrke</name>
+      <email>sven.ehrke@baloise.ch</email>
+    </developer>
+  </developers>
+
+  <ciManagement>
+    <system>Github Actions</system>
+    <url>https://github.com/baloise-incubator/baloise-design-system-webjar/actions</url>
+  </ciManagement>
+
+
+  <scm>
+    <url>https://github.com/baloise-incubator/baloise-design-system-webjar.git</url>
+    <connection>scm:git:https://github.com/baloise-incubator/baloise-design-system-webjar.git</connection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Baloise Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/baloise-incubator/baloise-design-system-webjar</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
