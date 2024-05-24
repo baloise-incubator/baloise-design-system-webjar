@@ -4,7 +4,7 @@
 
   <groupId>com.baloise.webjars</groupId>
   <artifactId>baloise-design-system</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>baloise-design-system-webjar</name>
