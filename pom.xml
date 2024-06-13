@@ -8,7 +8,7 @@
 
   <groupId>com.baloise.webjars</groupId>
   <artifactId>baloise-design-system</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
   <packaging>jar</packaging>
 
   <name>baloise-design-system-webjar</name>
@@ -32,7 +32,7 @@
   <scm>
     <url>https://github.com/baloise-incubator/baloise-design-system-webjar.git</url>
     <connection>scm:git:https://github.com/baloise-incubator/baloise-design-system-webjar.git</connection>
-    <tag>baloise-design-system-0.0.3-SNAPSHOT</tag>
+    <tag>baloise-design-system-0.0.3</tag>
   </scm>
 
   <distributionManagement>
