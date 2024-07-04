@@ -21,6 +21,12 @@ jobs:
       with:
         node-version: 18
     - run: npm ci
+    - name: Archive npm failure logs
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: npm-logs
+        path: /home/runner/.npm/_logs
     - run: npm run build --if-present
     - run: npm test --if-present
     - name: Set up JDK 21
