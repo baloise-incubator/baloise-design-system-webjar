@@ -1,12 +1,15 @@
 = Idea
 
-Create a webjar from the node_modules folder created from a singele package-json dependency: "@baloise/ds-core": "16.1.0"
+Create a webjar from the node_modules folder created from package-json dependencies:
+
+- "@baloise/ds-core"
+- "@baloise/ds-brand-icons"
 
 
 == steps
 
-- use npm install with a package.json having the design system dependency
-- use maven with a pom.xml to create a jar from the node_modules folder
+- use npm install
+- use maven to create a jar from the node_modules folder
 
 == Build
 
@@ -21,9 +24,9 @@ Now the webjar can be consumed like this:
 ----
 ...
 <dependency>
-    <groupId>org.svenehrke.webjars</groupId>
+    <groupId>org.webjars</groupId>
     <artifactId>baloise-design-system</artifactId>
-    <version>16.1.0</version>
+    <version>x.x.x</version>
 </dependency>
 ...
 ----
@@ -33,10 +36,24 @@ Now the webjar can be consumed like this:
 ----
 ...
 <head>
-	<link rel="stylesheet" href="/webjars/baloise-design-system/16.1.0/@baloise/ds-styles/css/all.min.css" />
-	<script type="module" src="/webjars/baloise-design-system/16.1.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
-	<script nomodule src="/webjars/baloise-design-system/16.1.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+	<link rel="stylesheet" href="/webjars/baloise-design-system/17.0.0/@baloise/ds-styles/css/all.min.css" />
+	<script type="module" src="/webjars/baloise-design-system/17.0.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
+	<script nomodule src="/webjars/baloise-design-system/17.0.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
 </head>
 ...
 ----
+
+If you use spring-boot and the webjars-locator-lite you can omit the versions which makes updates easier:
+.html file
+[source,html]
+----
+...
+<head>
+	<link rel="stylesheet" href="/webjars/baloise-design-system/@baloise/ds-styles/css/all.min.css" />
+	<script type="module" src="/webjars/baloise-design-system/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
+	<script nomodule src="/webjars/baloise-design-system/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+</head>
+...
+----
+
 
