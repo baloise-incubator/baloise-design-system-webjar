@@ -26,24 +26,13 @@ Now the webjar can be consumed like this:
 <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>baloise-design-system</artifactId>
-    <version>17.2.0</version>
+    <version>17.2.1</version>
 </dependency>
 ...
 ----
 
-.html file
-[source,html]
-----
-...
-<head>
-	<link rel="stylesheet" href="/webjars/baloise-design-system/17.2.0/@baloise/ds-styles/css/all.min.css" />
-	<script type="module" src="/webjars/baloise-design-system/17.2.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
-	<script nomodule src="/webjars/baloise-design-system/17.2.0/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
-</head>
-...
-----
-
 If you use spring-boot and the webjars-locator-lite you can omit the versions which makes updates easier:
+
 .html file
 [source,html]
 ----
@@ -52,6 +41,20 @@ If you use spring-boot and the webjars-locator-lite you can omit the versions wh
 	<link rel="stylesheet" href="/webjars/baloise-design-system/@baloise/ds-styles/css/all.min.css" />
 	<script type="module" src="/webjars/baloise-design-system/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
 	<script nomodule src="/webjars/baloise-design-system/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
+</head>
+...
+----
+
+Otherwise include the version as follows:
+
+.html file
+[source,html]
+----
+...
+<head>
+	<link rel="stylesheet" href="/webjars/baloise-design-system/17.2.1/@baloise/ds-styles/css/all.min.css" />
+	<script type="module" src="/webjars/baloise-design-system/17.2.1/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.esm.js"></script>
+	<script nomodule src="/webjars/baloise-design-system/17.2.1/@baloise/ds-core/dist/baloise-design-system/baloise-design-system.js"></script>
 </head>
 ...
 ----
