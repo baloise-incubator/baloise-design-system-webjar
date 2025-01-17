@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@baloise/ds-core": "17.2.4",
-    "@baloise/ds-brand-icons": "17.2.4"
+    "@baloise/ds-core": "17.2.5",
+    "@baloise/ds-brand-icons": "17.2.5"
   }
 }
