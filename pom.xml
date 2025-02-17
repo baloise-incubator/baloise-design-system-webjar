@@ -8,7 +8,7 @@
 
   <groupId>org.webjars</groupId>
   <artifactId>baloise-design-system</artifactId>
-  <version>17.4.1</version>
+  <version>18.0.0</version>
   <packaging>jar</packaging>
 
   <name>baloise-design-system-webjar</name>
