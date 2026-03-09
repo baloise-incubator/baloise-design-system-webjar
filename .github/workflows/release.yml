@@ -6,84 +6,36 @@ on:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
       - 'baloise-design-system-webjar-*'
-  workflow_dispatch:
 
 jobs:
   build:
-    name: Create / Rebuild Release
+    name: Create Release
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      packages: write
-
     steps:
-      # ------------------------------------------------------------
-      # Determine which tag to use
-      # ------------------------------------------------------------
-      - name: Determine tag
-        id: tag
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName')
-            echo "Using latest release tag: $TAG"
-            echo "tag=$TAG" >> $GITHUB_OUTPUT
-          else
-            echo "Using pushed tag: ${GITHUB_REF##*/}"
-            echo "tag=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # ------------------------------------------------------------
-      # Checkout the tag (NOT default branch)
-      # ------------------------------------------------------------
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.tag.outputs.tag }}
-
-      # ------------------------------------------------------------
-      # Node build
-      # ------------------------------------------------------------
       - name: Use Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
       - run: npm install
       - run: npm run build --if-present
       - run: npm test --if-present
-
-      # ------------------------------------------------------------
-      # Java / Maven build
-      # ------------------------------------------------------------
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-
       - name: Build with Maven
         run: mvn -B clean verify
 
-      # ------------------------------------------------------------
-      # Deploy to GitHub Package Registry
-      # ------------------------------------------------------------
-      - name: Deploy to GitHub Package Registry
+      - name: Deploy to Github Package Registry
         env:
           GITHUB_USERNAME: x-access-token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --settings .github/maven-settings.xml deploy
-
-      # ------------------------------------------------------------
-      # Upload artifacts to existing GitHub Release
-      # ------------------------------------------------------------
-      - name: Upload artifacts to GitHub Release
-        run: |
-          gh release upload \
-            ${{ steps.tag.outputs.tag }} \
-            ./target/*.jar \
-            --clobber
+      - name: Release using Github CLI
+        run: gh release create ${GITHUB_REF##*/} ./target/*.jar -t "Release ${GITHUB_REF##*/}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
